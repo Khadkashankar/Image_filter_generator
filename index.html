@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Filter Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="filter">
+            <div class="inputBox">
+                <span>grayscale</span>
+                <input type="range" min="0" max="100" value="0" id="grayscale">
+            </div>
+            <div class="inputBox">
+                <span>sepia</span>
+                <input type="range" min="0" max="100" value="0" id="sepia">
+            </div>
+            <div class="inputBox">
+                <span>blur</span>
+                <input type="range" min="0" max="100" value="0" id="blur">
+            </div>
+            <div class="inputBox">
+                <span>invert</span>
+                <input type="range" min="0" max="100" value="0" id="invert">
+            </div>
+            <div class="inputBox">
+                <span>opacity</span>
+                <input type="range" min="0" max="100" value="100" id="opacity">
+            </div>
+            <div class="inputBox">
+                <span>brightness</span>
+                <input type="range" min="0" max="1000" value="100" id="brightness">
+            </div>
+            <div class="inputBox">
+                <span>contrast</span>
+                <input type="range" min="0" max="1000" value="100" id="contrast">
+            </div>
+            <div class="inputBox">
+                <span>saturate</span>
+                <input type="range" min="0" max="1000" value="100" id="saturate">
+            </div>
+        </div>
+        <div class="result">
+            <img src="./xyz.jpg" alt="" id="image">
+            <div class="output">example</div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+        integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.inputBox input').on('input', function () {
+
+                let grayscale = $('#grayscale').val();
+                let sepia = $('#sepia').val();
+                let blur = $('#blur').val();
+                let invert = $('#invert').val();
+                let opacity = $('#opacity').val();
+                let brightness = $('#brightness').val();
+                let contrast = $('#contrast').val();
+                let saturate = $('#saturate').val();
+
+                $('#image').css('filter', 'grayscale(' + grayscale + '% ) sepia(' + sepia + '% ) blur(' + blur + 'px ) invert(' + invert + '% ) opacity(' + opacity + '% ) brightness(' + brightness + '% ) contrast(' + contrast + '% ) saturate(' + saturate + '% )')
+
+                let filter = $('#image').css('filter');
+                $('.output').text('filter' + filter + ';');
+            });
+
+        });
+    </script>
+</body>
+
+</html>
